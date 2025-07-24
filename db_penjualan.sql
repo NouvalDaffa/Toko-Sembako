@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2024 at 06:25 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- Generation Time: Jul 24, 2025 at 05:19 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,9 +42,11 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `harga_beli`, `harga_jual`, `stok`, `satuan`) VALUES
-(1, '53525585', 'Telur', '10000', '12500', 8, 'kg'),
+(1, '53525585', 'Telur', '10000', '12500', 1, 'kg'),
 (2, '90598509', 'Kopi Kapal Api', '1500', '1750', 14, 'sachet'),
-(4, '33602675', 'Gula Pasir', '7500', '8000', 14, 'kg');
+(4, '33602675', 'Gula Pasir', '7500', '8000', 14, 'kg'),
+(5, '52262946', 'Kopi liong + gula', '12000', '15000', 1, 'pak'),
+(6, '53460150', 'Kopi ABC susu', '10000', '15000', 1, 'renceng');
 
 -- --------------------------------------------------------
 
@@ -87,7 +89,8 @@ CREATE TABLE `detail_penjualan` (
 --
 
 INSERT INTO `detail_penjualan` (`no_penjualan`, `nama_barang`, `harga_barang`, `jumlah_barang`, `satuan`, `sub_total`) VALUES
-('PJ1732339419', 'Telur', '12500', 2, 'kg', '25000');
+('PJ1732339419', 'Telur', '12500', 2, 'kg', '25000'),
+('PJ1753321139', 'Telur', '12500', 7, 'kg', '87500');
 
 -- --------------------------------------------------------
 
@@ -108,7 +111,8 @@ CREATE TABLE `kasir` (
 --
 
 INSERT INTO `kasir` (`id`, `kode_kasir`, `nama_kasir`, `username_kasir`, `password_kasir`) VALUES
-(3, 'KASIR - 65', 'jamal', 'KSR65', '12345');
+(3, 'KASIR - 01', 'Jamal', 'KSR01', '12345'),
+(4, 'KASIR - 02', 'Farel', 'KSR02', '12345');
 
 -- --------------------------------------------------------
 
@@ -129,7 +133,8 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`id`, `kode_pengguna`, `nama_pengguna`, `username_pengguna`, `password_pengguna`) VALUES
-(2, 'gnt', 'genta', 'genta', '12345');
+(2, 'gnt', 'Genta', 'genta', '12345'),
+(3, 'nvl', 'Nouval', 'nouval', '12345');
 
 -- --------------------------------------------------------
 
@@ -151,7 +156,8 @@ CREATE TABLE `penjualan` (
 --
 
 INSERT INTO `penjualan` (`id`, `no_penjualan`, `nama_kasir`, `tgl_penjualan`, `jam_penjualan`, `total`) VALUES
-(4, 'PJ1732339419', 'jamal', '23/11/2024', '12:23:39', 25000);
+(4, 'PJ1732339419', 'jamal', '23/11/2024', '12:23:39', 25000),
+(5, 'PJ1753321139', 'Jamal', '24/07/2025', '08:38:59', 87500);
 
 --
 -- Indexes for dumped tables
@@ -195,7 +201,7 @@ ALTER TABLE `penjualan`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `data_toko`
@@ -207,19 +213,19 @@ ALTER TABLE `data_toko`
 -- AUTO_INCREMENT for table `kasir`
 --
 ALTER TABLE `kasir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
